@@ -1,0 +1,14 @@
+<div class="layer" ng-controller="startApp">
+	<div  class="score">
+		<span>Score: {{ score }}</span>
+	</div>
+	<div class="time">
+		<span>Time: {{ time }}s</span>
+	</div>
+	<div class="circle">
+		<div class="paraWrap">
+			<p><span ng-class = " { green: $index <= indexedChar }" ng-repeat="para in CurrentParaObj track by $index">{{ para }}</span></p>
+		</div>
+		<div class="lineOverlay"></div>
+	</div> 
+</div>
