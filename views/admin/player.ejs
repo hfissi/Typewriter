@@ -1,0 +1,20 @@
+<% include ./header %>
+
+  <% if(score) {%>
+    <div class="main-container">
+      <div class="row">
+      
+      <% score.forEach(function(item){ %>
+        <div class="col-md-3">
+          <div class="panel panel-primary">
+            <div class="panel-heading">
+              <h3 class="panel-title"><span><%= item.user %> : </span> <span><%= item.score %></span></h3>
+            </div>
+          </div>
+        </div>
+         <% }) %>
+      </div>
+    </div>
+  <% } %>
+
+<% include ./footer %>

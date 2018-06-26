@@ -1,19 +1,18 @@
-<section>
+<div class="panel dif freeze animated bounceInDown">
+<section ng-controller="logoutController">
         <div class="grid">
 
-      <form action="" method="POST" class="form login">
+      <form action="/player/register" method="POST" class="form login">
 
         <div class="form__field">
-          <label for="login__username">                      
-            <span class="hidden">Username</span>
-          </label>
           <input id="login__username" type="text" name="username" class="form__input" placeholder="Username" required>
         </div>
-
+        
         <div class="form__field">
-          <label for="login__password">
-            <span class="hidden">Password</span>
-          </label>
+          <input id="login__email" type="email" name="email" class="form__input" placeholder="Email" required>
+        </div>
+        
+        <div class="form__field">
           <input id="login__password" type="password" name="password" class="form__input" placeholder="Password" required>
         </div>
 
@@ -28,3 +27,4 @@
     </div>
 
 </section>
+</div>

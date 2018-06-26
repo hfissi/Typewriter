@@ -10,7 +10,7 @@ module.exports = {
 	/** Recommended customization **/
 
 	DB_PATH: 'mongodb://localhost:27017/typewriterbd',
-	PORT: 3200,
+	PORT: 3100,
 
 	/** Recommend that you leave these configuration settings **/
 

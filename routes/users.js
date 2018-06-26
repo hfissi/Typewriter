@@ -5,7 +5,7 @@
  * need to edit this file.
  */
 
- var modelLocation = '../models/user'
+ var modelLocation = '../models/admin'
 
  /****************************************************************
  *				   DO NOT TOUCH BELOW THIS LINE 				 *
@@ -30,7 +30,7 @@
  *
  */
 
- router.post(routeIdentifier+'/create', function(req, res, next) {
+ router.post('/create', function(req, res, next) {
    console.log(req.body);
     if (req.body === undefined || req.body.username === undefined || req.body.password === undefined) {
         return res.json({

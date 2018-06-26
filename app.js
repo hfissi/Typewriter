@@ -6,7 +6,7 @@
 
  /** External modules **/
 var createError = require('http-errors');
-var express = require('express')
+var express = require('express');
 var mongoose = require('mongoose');
 var util = require('util');
 var path = require('path');
@@ -18,9 +18,11 @@ var passport = require('passport');
 /** Internal modules **/
 var config = require('./private/config');
 var authController = require('./controllers/AuthController');
+// var authPlayer = require('./controllers/playerAuth');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var adminRouter = require('./routes/admin');
+var playerRouter = require('./routes/player');
 
 /** Models **/
 
@@ -30,8 +32,20 @@ mongoose.connect(config.DB_PATH);
 
 /** Express setup **/
 var app = express();
+var http = require('http').Server(app);
+var io = require('socket.io')(http);
+
 app.use(express.static(path.join(__dirname, 'public')));
 
+/*** when user connect ***/
+io.on('connection', function(socket){
+  socket.on('chat message', function(msg){
+     io.emit('chat message', msg);
+  });
+  socket.on('user connect', function () {
+    io.emit('user connect');
+  })
+});
 /*** Passport Initial ***/
 app.use(session({
    keys: config.SESSION_SECRET_KEYS,
@@ -51,14 +65,20 @@ app.use(cookieParser());
 
 /*** Routes ****/
 app.use('/', authController.router);
+// app.use('/', authPlayer.router);
 app.use('/admin', authController.isAuthenticated);
 app.use('/', usersRouter);
 app.use('/', adminRouter);
 app.use('/', indexRouter);
+app.use('/', playerRouter);
 app.all('*', function (req, res){
  res.status(403).render('404.ejs');
 })
-
+app.all('/*', function(req, res, next) {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Headers', 'Content-Type,X-Requested-With');
+    next();
+});
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
@@ -77,7 +97,7 @@ app.use(function(err, req, res, next) {
 
 // Start server
  var port = config.PORT || 3000;
- app.listen(port,function(){
+ http.listen(port,function(){
  	console.log("running on port "+ port);
  })
  console.log('\n--- Information ---');

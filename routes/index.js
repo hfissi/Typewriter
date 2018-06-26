@@ -31,5 +31,8 @@
  router.get(routeIdentifier+'/play', function(req, res) {
   res.render('app/routing/game');
  });
+  router.get(routeIdentifier+'/menu', function(req, res) {
+  res.render('app/routing/menu');
+ });
 
  module.exports = router;

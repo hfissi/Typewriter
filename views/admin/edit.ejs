@@ -5,15 +5,15 @@
     <form class="_form-data" action="/admin/update/<%= item._id %>" method="post">
       <div class="form-group">
         <label for="title">titre</label>
-        <input type="text" class="form-control" id="title" name="title" placeholder="Ajouter un titre"  value=<%= item.title %>>
+        <input type="text" class="form-control" id="title" name="title" placeholder="Ajouter un titre"  value="<%= item.title %>">
       </div>
       <div class="form-group">
         <label for="">paragaph size</label>
-        <input type="text" class="form-control" id="" name="size" placeholder="size" value=<%= item.size %>>
+        <input type="text" class="form-control" id="" name="size" placeholder="size" value="<%= item.size %>">
       </div>
       <div class="form-group">
         <label for="">description</label>
-        <textarea class="form-control" name="para" rows="8" cols="80">value=<%= item.para %></textarea>
+        <textarea class="form-control" name="para" rows="8" cols="80"><%= item.para %></textarea>
       </div>
       <button class="btn btn-primary btn-lg" type="submit">Update</button>
     </form>

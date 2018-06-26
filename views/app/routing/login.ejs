@@ -1,28 +1,20 @@
-<section>
-        <div class="grid">
 
-      <form action="" method="POST" class="form login">
-
-        <div class="form__field">
-          <label for="login__username">
-          	<span class="hidden">Username</span></label>
-          <input id="login__username" type="text" name="username" class="form__input" placeholder="Username" required>
+<div class="panel dif freeze animated bounceInDown">
+<section ng-controller="loginController">
+  <div class="grid">
+    <div ng-show="error" class="alert alert-danger">{{errorMessage}}</div>
+    <form class="form login" ng-submit="login()">
+      <div class="form__field">
+          <input id="login__username" type="text" name="username" ng-model="loginForm.username" class="form__input" placeholder="Username" required>
         </div>
-
         <div class="form__field">
-          <label for="login__password">
-          	<span class="hidden">Password</span></label>
-          <input id="login__password" type="password" name="password" class="form__input" placeholder="Password" required>
-        </div>
-
-        <div class="form__field">
-          <input type="submit" value="Sign In">
-        </div>
-
-      </form>
-
-      <p class="text--center">Not a member? <a href="#!signup">Sign up now</a></p>
-
-    </div>
-    
-</section>
+            <input id="login__password" type="password" name="password" class="form__input" ng-model="loginForm.password" placeholder="Password" required>
+          </div>
+          <div class="form__field">
+            <input type="submit" value="Login" ng-disabled="disabled">
+          </div>
+        </form>
+        <p class="text--center">Not a member? <a href="#!signup">Sign up now</a></p>
+      </div>
+    </section>
+</div>

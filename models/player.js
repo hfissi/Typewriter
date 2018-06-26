@@ -31,9 +31,6 @@ var Schema = new mongoose.Schema({
 	email: {
 		type: String,
 		unique: true
-	},
-	score: {
-		type: Number
 	}
 });
 

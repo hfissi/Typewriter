@@ -5,13 +5,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title></title>
+    <style>
+      body {
+        background-color: #2c3338;
+        color: #606468;
+      }
+    </style>
     <link rel="stylesheet" href="css/menu.css">
   </head>
   <body class="align">
 
     <div class="grid">
 
-      <form action="/user/create" method="POST" class="form login">
+      <form action="/create" method="POST" class="form login">
 
         <div class="form__field">
           <label for="login__username"><svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#user"></use></svg><span class="hidden">Username</span></label>
@@ -24,12 +30,12 @@
         </div>
 
         <div class="form__field">
-          <input type="submit" value="Sign In">
+          <input type="submit" value="Sign Up">
         </div>
 
       </form>
 
-      <p class="text--center">Not a member? <a href="/signup">Sign up now</a> <svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="assets/images/icons.svg#arrow-right"></use></svg></p>
+      <p class="text--center">Already member? <a href="/login">Login now</a> <svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="assets/images/icons.svg#arrow-right"></use></svg></p>
 
     </div>
 

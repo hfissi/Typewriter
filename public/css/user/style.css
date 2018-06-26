@@ -21,6 +21,9 @@
 .section--intro {
   overflow: hidden;
 }
+*{
+  font-family: 'Courgette', cursive;
+}
 html,
 body {
   width: 100%;
@@ -29,9 +32,14 @@ body {
   overflow-x: hidden;
   margin: 0;
 }
-body{
-  background-color: #2c3338;
-  color: #606468;
+html {
+    display: table;
+    width: 100%;
+    height: 100%;
+}
+body {
+    display: table-row;
+    background: #000 radial-gradient(1000px 500px, #33a5ab, #000);
 }
 .wrapper {
   width: 960px;
@@ -233,20 +241,23 @@ body{
     display: block;
     width: 500px;
     height: 500px;
-    background: #fafafa;
+    margin: auto;
+    margin-bottom: 20px;
     overflow: hidden;
-    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    border: 1px solid transparent;
 }
 .lineOverlay {
     position: absolute;
     width: 500px;
     height: 500px;
     border-radius: 50%;
-    border: 10px solid #ccc;
-    border-top: 10px solid #2d99a9;
-    clip: rect(0px, 500px, 500px, 0px); 
+    border: 3px solid #ccc;
+    border-top: 3px solid #a72da9;
+    clip: rect(0px, 500px, 500px, 0px);
     -webkit-animation: spin 2s linear infinite;
-    animation: spin 2s linear infinite;
+    animation: spin 1s linear infinite;
 }
 
  Safari 
@@ -270,7 +281,7 @@ body{
     white-space: nowrap;
     margin: 0;
     font-size: 24px;
-    color: #424242;
+    color: #fff;
     font-weight: bold;
 }
 span.green {
@@ -278,16 +289,192 @@ span.green {
     font-weight: bold;
 }
 .score {
-    display: inline-block;
-    width: 150px;
+    width: 100%;
+    padding: 6px;
+    margin-bottom: 21px;
     text-align: center;
+    color: #0d1115;
+    font-weight: bold;
 }
 .time {
-    display: inline-block;
-    width: 150px;
+    width: 100%;
     text-align: center;
-    float: right;
+    padding: 6px;
+    color: #0d1115;
+    font-weight: bold;
 }
 .time, .score {
     background: #fafafa;
+}
+.logout {
+    display: block;
+    text-align: center;
+    cursor: pointer;
+}
+.layer {
+    position: relative;
+    padding-top: 87px ;
+}
+.overlay {
+    position: absolute;
+    top: 0;
+    background: #2c3338;
+    width: 100%;
+    height: 100%;
+}
+.popup {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    font-size: 30px;
+    color: #fff;
+    width: 450px;
+}
+.centred{
+  text-align: center;
+}
+.panel {
+    padding: 12px;
+    margin-bottom: 20px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+}
+.panel.dif.freeze {
+  height: auto;
+    width: 500px;
+    background: #069A8E;
+    position: absolute;
+    top: 150px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    border-radius: 20px;
+    text-align: center;
+    padding: 63px 0;
+}
+.start a {
+     font-size: 51px;
+    display: block;
+}
+.panel.dif.freeze h2 {
+    color: #FFF176;
+}
+.nav {
+    display: block;
+    position: absolute;
+    width: 350px;
+    left: -350px;
+    height: 100VH;
+    background: #1f9096;
+    color: #fff;
+    top: 0;
+    z-index: 9;
+    box-shadow: 0 0 13px #00000061;
+    transition: all .2s ease-in;
+}
+.panel.dif>ul {
+    list-style: none;
+    padding: 0;
+}
+.nav button.navbar-toggle.white {
+     margin-top: 8px;
+    float: right;
+}
+.palyer {
+    color: #fff;
+}
+.player {
+    padding: 15px;
+    text-align: center;
+}
+.panel.dif {
+  margin-right: 15px;
+  text-align: center;
+}
+.panel.dif>p {
+    color: #fff;
+}
+button.navbar-toggle.white {
+    display: block;
+    float: left;
+    border-radius: 0;
+    margin-top: -50px;
+}
+.navbar-toggle .icon-bar {
+    background: #fff;
+}
+.nav.open {
+    left: 0;
+}
+form input { 
+  border: 0; 
+  padding: 10px; 
+  width: 100%; 
+  margin-right: .5%;
+  border-top: 1px solid #ccc;
+}
+form button { 
+  background: rgb(28, 114, 142);
+  border: none;
+  color: #fff;
+  padding: 10px;
+  margin-top: 5px;
+  width: 150px;
+}
+#messages { 
+  list-style-type: none; 
+  margin: 0; 
+  padding: 0; 
+}
+#messages li { 
+  padding: 5px 10px;
+  background: #fff;
+  border-bottom: 1px solid #efefef;
+}
+#messages li:nth-child(odd) { 
+  background: #eee; 
+}
+.colors>span {
+    display: inline-block;
+    height: 29px;
+    width: 29px;
+    margin: 0 0px 0px 0;
+    border: 3px solid #188c92;
+    border-radius: 20px !important;
+    cursor: pointer;
+}
+.colors {
+    margin: 15px;
+    text-align: center;
+}
+span.red {
+    background: #da2626;
+}
+span.blue {
+    background: #305fcc;
+}
+span.gre {
+    background: #068c06;
+}
+span.yellow {
+    background: #bbbb0c;
+}
+span.default {
+  background: #33a5ab;
+}
+span.userIcon {
+    padding: 9px 18px;
+    font-size: 31px;
+    background: #1a5255;
+    border-radius: 50%;
+}
+.left{
+  float: left;
+}
+#messages {
+    min-height: 170px;
+    background: #fff;
+    overflow: auto;
+    max-height: 200px;
 }

@@ -1,14 +1,83 @@
 <div class="layer" ng-controller="startApp">
-	<div  class="score">
-		<span>Score: {{ score }}</span>
-	</div>
-	<div class="time">
-		<span>Time: {{ time }}s</span>
-	</div>
-	<div class="circle">
-		<div class="paraWrap">
-			<p><span ng-class = " { green: $index <= indexedChar }" ng-repeat="para in CurrentParaObj track by $index">{{ para }}</span></p>
+  <button type="button" class="navbar-toggle white">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span> 
+  </button>
+	<div class="nav">
+		  <button type="button" class="navbar-toggle white">
+		        <span class="icon-bar"></span>
+		        <span class="icon-bar"></span>
+		        <span class="icon-bar"></span> 
+		  </button>
+		<div class="player">
+			<div ng-controller="logoutController" class="left">
+			  <div class="centred">
+			  	<a ng-click='logout()' class="logout"><i class="fa fa-arrow-left"> <span>logout</span></i></a>
+			  </div>
+			</div>
+			<span class="userIcon">
+				<i class="fa fa-user"></i>
+			</span>
+			<p>Bonjour : {{ user.username }}</p>
 		</div>
-		<div class="lineOverlay"></div>
-	</div> 
+		<div class="colors">
+			<p>Change colors</p>
+			<span class="red" ng-click='changeColor("#da2626")' data-color=""></span>
+			<span class="blue" ng-click='changeColor("#3c70e8")' data-color=""></span>
+			<span class="gre" ng-click='changeColor("#068c06")' data-color=""></span>
+			<span class="yellow" ng-click='changeColor("#bbbb0c")' data-color=""></span>
+			<span class="default" ng-click='changeColor("#33a5ab")' data-color=""></span>
+		</div>
+	</div>
+	
+  <div ng-if="!finish" class="container">
+	<div class="row">
+		<div class="col-md-9">
+			<div class="panel dif animated bounceInUp col-md-3">
+				<p style="color:#fff;">title : {{ paraTitle }}</p>
+				<p style="color:#fff;"> {{ CurrentPara }}</p>
+			</div>
+			<div class="circle col-md-9">
+				<div class="paraWrap">
+					<p class="animated {{ animation }}"><span ng-class = " { green: $index <= indexedChar }" ng-repeat="para in CurrentParaObj track by $index">{{ para }}</span></p>
+				</div>
+			<!-- 	<div class="lineOverlay"></div> -->
+			</div>
+		</div>
+		<div class="col-md-3">
+			<div class="panel dif animated bounceInDown">
+				<p>List player</p>
+				<ul>
+					<li ng-repeat="score in scores">
+						<div class="palyer">
+							<span>{{ score.user }} :</span>
+							<span>{{ score.score }}</span>
+						</div>
+					</li>
+				</ul>
+		    </div>
+			<div class="panel dif animated bounceInDown">
+				<div  class="score">
+					<span>Score: {{ score }}</span>
+				</div>
+				<div id="timer" class="time">
+					<span>Time: {{ time }}s</span>
+				</div>
+		    </div>
+			<div class="panel dif  animated bounceInUp">
+			 	<ul id="messages"></ul>
+			    <form id="chatForm" action="">
+			      <input id="m" autocomplete="off" placeholder="Type a message" /><button>Send</button>
+			    </form>
+		    </div>
+		</div>
+	</div>
+  </div>
+	<div ng-if="finish">
+		<div class="panel dif freeze animated bounceInDown">
+			<p>Your score : {{ score }}</p>
+			<a href="/">play again!</a>
+		</div>
+	</div>
 </div>

@@ -2,34 +2,36 @@
 var app = angular.module("typeWriterApp", ["ngRoute"]);
 
 /**** Routing ****/
-app.config(function($routeProvider, $locationProvider) {
+app.config(function($routeProvider) {
     $routeProvider
     .when("/", {
-        templateUrl : "routing/intro",
-        access: {restricted: true}
+        templateUrl : "routing/menu",
+        access: { restricted: true }
+    })
+    .when("/play", {
+        templateUrl : "routing/play",
+        access: { restricted: true }
     })
     .when("/login", {
         templateUrl : "routing/login",
         controller: 'loginController',
-        access: {restricted: false}
+        access: { restricted: false }
     })
     .when("/signup", {
         templateUrl : "routing/signup",
         controller: 'loginController',
-        access: {restricted: false}
+        access: { restricted: false }
     })
-    .when("/play", {
-        templateUrl : "routing/play"
-    })  
     .otherwise({
-        template : "<h1>Wrong</h1><p>path</p>"
+        template : "<h1>Wrong</h1><p>path</p>",
+        access: { restricted: false }
     });
     
     // use the HTML5 History API
     // $locationProvider.html5Mode(true);
 });
 
-myApp.run(function ($rootScope, $location, $route, AuthService) {
+app.run(function ($rootScope, $location, $route, AuthService) {
   $rootScope.$on('$routeChangeStart',
     function (event, next, current) {
       AuthService.getUserStatus()
